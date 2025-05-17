@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		261CDF192DD87BC000168C00 /* UseCases in Resources */ = {isa = PBXBuildFile; fileRef = 261CDF182DD87BC000168C00 /* UseCases */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		261CDEE62DD8786E00168C00 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,22 +31,17 @@
 		261CDED82DD8786D00168C00 /* StockHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261CDEE52DD8786E00168C00 /* StockHomeworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockHomeworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		261CDEEF2DD8786E00168C00 /* StockHomeworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockHomeworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		261CDF0E2DD8790D00168C00 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
+		261CDF122DD87AA700168C00 /* StockList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockList; sourceTree = "<group>"; };
+		261CDF132DD87ACE00168C00 /* StockDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockDetails; sourceTree = "<group>"; };
+		261CDF182DD87BC000168C00 /* UseCases */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UseCases; sourceTree = "<group>"; };
+		26DFE5952DD87C6F00748E16 /* ArchitectureKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ArchitectureKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		261CDEDA2DD8786D00168C00 /* StockHomework */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = StockHomework;
-			sourceTree = "<group>";
-		};
-		261CDEE82DD8786E00168C00 /* StockHomeworkTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = StockHomeworkTests;
-			sourceTree = "<group>";
-		};
-		261CDEF22DD8786E00168C00 /* StockHomeworkUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = StockHomeworkUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +74,11 @@
 		261CDECF2DD8786D00168C00 = {
 			isa = PBXGroup;
 			children = (
+				26DFE5952DD87C6F00748E16 /* ArchitectureKit */,
+				261CDF0E2DD8790D00168C00 /* Domain */,
+				261CDF182DD87BC000168C00 /* UseCases */,
+				261CDF112DD87A7A00168C00 /* Features */,
 				261CDEDA2DD8786D00168C00 /* StockHomework */,
-				261CDEE82DD8786E00168C00 /* StockHomeworkTests */,
-				261CDEF22DD8786E00168C00 /* StockHomeworkUITests */,
 				261CDED92DD8786D00168C00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +91,15 @@
 				261CDEEF2DD8786E00168C00 /* StockHomeworkUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		261CDF112DD87A7A00168C00 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				261CDF132DD87ACE00168C00 /* StockDetails */,
+				261CDF122DD87AA700168C00 /* StockList */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,9 +140,6 @@
 			dependencies = (
 				261CDEE72DD8786E00168C00 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				261CDEE82DD8786E00168C00 /* StockHomeworkTests */,
-			);
 			name = StockHomeworkTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +159,6 @@
 			);
 			dependencies = (
 				261CDEF12DD8786E00168C00 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				261CDEF22DD8786E00168C00 /* StockHomeworkUITests */,
 			);
 			name = StockHomeworkUITests;
 			packageProductDependencies = (
@@ -212,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261CDF192DD87BC000168C00 /* UseCases in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
