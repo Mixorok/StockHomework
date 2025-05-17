@@ -19,7 +19,6 @@ public final class StockListViewModel: ViewModel<StockListState, StockListAction
     public init(dependencies: Dependencies) {
         self.dependencies = dependencies
 
-
         func reduce(
             state: StockListState,
             event: StockListEvents

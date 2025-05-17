@@ -26,5 +26,4 @@ public struct Stock {
         self.lastClose = lastClose
         self.percentChange = percentChange
     }
-
 }
