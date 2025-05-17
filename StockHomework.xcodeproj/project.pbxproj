@@ -14,6 +14,7 @@
 		26D8CC442DD89120001178E2 /* StockList in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC432DD89120001178E2 /* StockList */; };
 		26D8CC462DD89120001178E2 /* UseCases in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC452DD89120001178E2 /* UseCases */; };
 		26D8CC482DD89120001178E2 /* UseCasesImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC472DD89120001178E2 /* UseCasesImpl */; };
+		26D8CC502DD8AB8D001178E2 /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC4F2DD8AB8D001178E2 /* Services */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		261CDF122DD87AA700168C00 /* StockList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockList; sourceTree = "<group>"; };
 		261CDF132DD87ACE00168C00 /* StockDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockDetails; sourceTree = "<group>"; };
 		261CDF182DD87BC000168C00 /* UseCases */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UseCases; sourceTree = "<group>"; };
+		26D8CC4E2DD8A4C8001178E2 /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
 		26DFE5952DD87C6F00748E16 /* ArchitectureKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ArchitectureKit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				26D8CC442DD89120001178E2 /* StockList in Frameworks */,
 				26D8CC422DD89120001178E2 /* StockDetails in Frameworks */,
 				26D8CC3E2DD89120001178E2 /* ArchitectureKit in Frameworks */,
+				26D8CC502DD8AB8D001178E2 /* Services in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 		261CDECF2DD8786D00168C00 = {
 			isa = PBXGroup;
 			children = (
+				26D8CC4E2DD8A4C8001178E2 /* Services */,
 				26DFE5952DD87C6F00748E16 /* ArchitectureKit */,
 				261CDF0E2DD8790D00168C00 /* Domain */,
 				261CDF182DD87BC000168C00 /* UseCases */,
@@ -148,6 +152,7 @@
 				26D8CC432DD89120001178E2 /* StockList */,
 				26D8CC452DD89120001178E2 /* UseCases */,
 				26D8CC472DD89120001178E2 /* UseCasesImpl */,
+				26D8CC4F2DD8AB8D001178E2 /* Services */,
 			);
 			productName = StockHomework;
 			productReference = 261CDED82DD8786D00168C00 /* StockHomework.app */;
@@ -614,6 +619,10 @@
 		26D8CC472DD89120001178E2 /* UseCasesImpl */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UseCasesImpl;
+		};
+		26D8CC4F2DD8AB8D001178E2 /* Services */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Services;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

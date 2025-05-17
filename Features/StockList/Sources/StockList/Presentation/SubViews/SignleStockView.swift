@@ -41,11 +41,9 @@ internal struct SingleStockView: View {
                     }
                 }
 
-                if let lastClose = stock.lastClose {
-                    Text(String(format: "$%.2f", lastClose))
-                        .font(.headline)
-                        .monospacedDigit()
-                }
+                Text(String(format: "$%.2f", stock.previousClose))
+                    .font(.headline)
+                    .monospacedDigit()
             }
             .contentShape(Rectangle())
         }
