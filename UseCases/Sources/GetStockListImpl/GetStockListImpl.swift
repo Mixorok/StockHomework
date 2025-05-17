@@ -8,38 +8,58 @@
 import Combine
 import Domain
 import GetStockList
+import NetworkClient
 
 public struct GetStockListImpl: GetStockList {
-    
-    public init () {}
+
+    private let networkClient: NetworkClient
+
+    public init (networkClient: NetworkClient) {
+        self.networkClient = networkClient
+    }
 
     public func callAsFunction() -> AnyPublisher<[Stock], any Error> {
-        Just(
-            [
-                Stock(
-                    symbol: "AAPL",
-                    name: "Apple Inc.",
-                    previousClose: 150.0,
-                    lastClose: 155.0,
-                    percentChange: 3.33
-                ),
-                .init(
-                    symbol: "GOOGL",
-                    name: "Alphabet Inc.",
-                    previousClose: 2800.0,
-                    lastClose: 2780.0,
-                    percentChange: -0.71
-                ),
-                .init(
-                    symbol: "AMZN",
-                    name: "Amazon.com Inc.",
-                    previousClose: 3400.0,
-                    lastClose: 3350.0,
-                    percentChange: -1.47
-                ),
-            ]
-        )
-        .setFailureType(to: Error.self)
-        .eraseToAnyPublisher()
+        networkClient.get(StockListResponse.self, path: "market/v2/get-summary")
+            .map(\.marketSummaryAndSparkResponse.result)
+            .map { results in
+                results.map { response in
+                    Stock(
+                        symbol: response.symbol,
+                        name: response.fullExchangeName,
+                        previousClose: response.spark.previousClose,
+                        percentChange: response.percentChange
+                    )
+
+                }
+            }
+            .eraseToAnyPublisher()
     }
+}
+
+private extension ResultResponse {
+
+    var percentChange: Double? {
+        guard let lastClose = spark.close.last(where: { $0 != nil }) as? Double else { return nil }
+        let change = spark.previousClose - lastClose
+        return (change / lastClose) * 100
+    }
+}
+
+private struct StockListResponse: Decodable {
+    let marketSummaryAndSparkResponse: MarketSummaryAndSparkResponse
+}
+
+private struct MarketSummaryAndSparkResponse: Decodable {
+    let result: [ResultResponse]
+}
+
+private struct ResultResponse: Decodable {
+    let fullExchangeName: String
+    let symbol: String
+    let spark: SparkResponse
+}
+
+private struct SparkResponse: Decodable {
+    let previousClose: Double
+    let close: [Double?]
 }

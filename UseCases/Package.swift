@@ -22,7 +22,9 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../Domain")],
+        .package(path: "../Domain"),
+        .package(path: "../Services")
+    ],
     targets: [
         .target(
             name: "GetStockList",
@@ -34,11 +36,19 @@ let package = Package(
         ),
         .target(
             name: "GetStockListImpl",
-            dependencies: ["Domain", "GetStockList"]
+            dependencies: [
+                "Domain",
+                "GetStockList",
+                .product(name: "NetworkClient", package: "Services"),
+            ]
         ),
         .target(
             name: "GetStockDetailsImpl",
-            dependencies: ["Domain", "GetStockDetails"]
+            dependencies: [
+                "Domain",
+                "GetStockDetails",
+                .product(name: "NetworkClient", package: "Services"),
+            ]
         ),
     ]
 )
