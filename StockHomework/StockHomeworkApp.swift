@@ -11,7 +11,9 @@ import SwiftUI
 struct StockHomeworkApp: App {
     var body: some Scene {
         WindowGroup {
-            EmptyView()
+            NavigationStack {
+                StockListComponent().makeStockList()
+            }
         }
     }
 }

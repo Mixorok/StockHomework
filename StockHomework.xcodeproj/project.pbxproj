@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		261CDF192DD87BC000168C00 /* UseCases in Resources */ = {isa = PBXBuildFile; fileRef = 261CDF182DD87BC000168C00 /* UseCases */; };
+		26D8CC3E2DD89120001178E2 /* ArchitectureKit in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC3D2DD89120001178E2 /* ArchitectureKit */; };
+		26D8CC402DD89120001178E2 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC3F2DD89120001178E2 /* Domain */; };
+		26D8CC422DD89120001178E2 /* StockDetails in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC412DD89120001178E2 /* StockDetails */; };
+		26D8CC442DD89120001178E2 /* StockList in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC432DD89120001178E2 /* StockList */; };
+		26D8CC462DD89120001178E2 /* UseCases in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC452DD89120001178E2 /* UseCases */; };
+		26D8CC482DD89120001178E2 /* UseCasesImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 26D8CC472DD89120001178E2 /* UseCasesImpl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D8CC462DD89120001178E2 /* UseCases in Frameworks */,
+				26D8CC402DD89120001178E2 /* Domain in Frameworks */,
+				26D8CC482DD89120001178E2 /* UseCasesImpl in Frameworks */,
+				26D8CC442DD89120001178E2 /* StockList in Frameworks */,
+				26D8CC422DD89120001178E2 /* StockDetails in Frameworks */,
+				26D8CC3E2DD89120001178E2 /* ArchitectureKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +91,7 @@
 				261CDF182DD87BC000168C00 /* UseCases */,
 				261CDF112DD87A7A00168C00 /* Features */,
 				261CDEDA2DD8786D00168C00 /* StockHomework */,
+				26D8CC3C2DD89120001178E2 /* Frameworks */,
 				261CDED92DD8786D00168C00 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +115,13 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
+		26D8CC3C2DD89120001178E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +142,12 @@
 			);
 			name = StockHomework;
 			packageProductDependencies = (
+				26D8CC3D2DD89120001178E2 /* ArchitectureKit */,
+				26D8CC3F2DD89120001178E2 /* Domain */,
+				26D8CC412DD89120001178E2 /* StockDetails */,
+				26D8CC432DD89120001178E2 /* StockList */,
+				26D8CC452DD89120001178E2 /* UseCases */,
+				26D8CC472DD89120001178E2 /* UseCasesImpl */,
 			);
 			productName = StockHomework;
 			productReference = 261CDED82DD8786D00168C00 /* StockHomework.app */;
@@ -563,6 +589,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26D8CC3D2DD89120001178E2 /* ArchitectureKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArchitectureKit;
+		};
+		26D8CC3F2DD89120001178E2 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		26D8CC412DD89120001178E2 /* StockDetails */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StockDetails;
+		};
+		26D8CC432DD89120001178E2 /* StockList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StockList;
+		};
+		26D8CC452DD89120001178E2 /* UseCases */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UseCases;
+		};
+		26D8CC472DD89120001178E2 /* UseCasesImpl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UseCasesImpl;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 261CDED02DD8786D00168C00 /* Project object */;
 }
