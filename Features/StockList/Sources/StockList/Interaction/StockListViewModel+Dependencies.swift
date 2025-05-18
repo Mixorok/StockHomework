@@ -6,14 +6,21 @@
 //
 
 import GetStockList
+import StocksRepository
 
 public extension StockListViewModel {
     
     struct Dependencies {
+
         let getStockList: GetStockList
-        
-        public init(getStockList: GetStockList) {
+        let stocksRepository: StocksRepository
+
+        public init(
+            getStockList: GetStockList,
+            stocksRepository: StocksRepository
+        ) {
             self.getStockList = getStockList
+            self.stocksRepository = stocksRepository
         }
     }
 }
