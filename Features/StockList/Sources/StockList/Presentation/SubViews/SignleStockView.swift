@@ -7,6 +7,7 @@
 
 import Domain
 import SwiftUI
+import CommonUI
 
 internal struct SingleStockView: View {
 
@@ -31,17 +32,11 @@ internal struct SingleStockView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
 
                     if let change = stock.percentChange {
-                        HStack(spacing: 2) {
-                            Image(systemName: change > 0 ? "arrow.up" : "arrow.down")
-                            Text(String(format: "%.2f%%", change))
-                        }
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundStyle(change > 0 ? .green : .red)
+                        PercentChangeView(change: change)
                     }
                 }
 
-                Text(String(format: "$%.2f", stock.previousClose))
+                Text(stock.previousClose.asCurrency)
                     .font(.headline)
                     .monospacedDigit()
             }

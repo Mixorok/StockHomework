@@ -15,6 +15,7 @@ let package = Package(
         .package(path: "../ArchitectureKit"),
         .package(path: "../Domain"),
         .package(path: "../UseCases"),
+        .package(path: "../CommonUI"),
     ],
     targets: [
         .target(
@@ -22,6 +23,7 @@ let package = Package(
             dependencies: [
                 "Domain",
                 "ArchitectureKit",
+                "CommonUI",
                 .product(name: "UseCases", package: "UseCases")
             ],
         )

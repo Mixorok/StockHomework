@@ -11,5 +11,21 @@ let package = Package(
             targets: ["StockDetails"]
         ),
     ],
-    targets: [.target(name: "StockDetails")]
+    dependencies: [
+        .package(path: "../ArchitectureKit"),
+        .package(path: "../Domain"),
+        .package(path: "../UseCases"),
+        .package(path: "../CommonUI"),
+    ],
+    targets: [
+        .target(
+            name: "StockDetails",
+            dependencies: [
+                "Domain",
+                "ArchitectureKit",
+                "CommonUI",
+                .product(name: "UseCases", package: "UseCases")
+            ],
+        )
+    ]
 )

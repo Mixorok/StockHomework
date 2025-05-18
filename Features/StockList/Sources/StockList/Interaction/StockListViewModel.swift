@@ -24,41 +24,45 @@ public final class StockListViewModel: ViewModel<StockListState, StockListAction
         let updateStocks = dependencies.stocksRepository.stocks
             .map(StockListEvents.didFetchStocks)
 
-        func reduce(
-            state: StockListState,
-            event: StockListEvents
-        ) -> StockListState {
-            var state = state
-            state.error = nil
-            switch event {
-            case .didFetchStocks(let stocks):
-                state.stocks = stocks
-                state.isLoading = false
-                if !stocks.isEmpty {
-                    state.isInitialLoading = false
-                }
-            case .didFailToFetchStocks(let error):
-                state.error = error.localizedDescription
-                state.isLoading = false
-                state.isInitialLoading = true
-            case .didStartFetchingStocks:
-                if state.isInitialLoading {
-                    state.isLoading = true
-                }
-            case .didOpenStockDetail(let stockSymbol):
-                state.selectedStock = stockSymbol
-            }
-            return state
-        }
-
         super.init(
             initial: .init(),
             dataEvents: events.merge(with: updateStocks),
-            reducer: reduce
+            reducer: Self.reduce
         )
 
         send(.fetchStocks)
         startTimer()
+    }
+
+    static func reduce(
+        state: StockListState,
+        event: StockListEvents
+    ) -> StockListState {
+        var state = state
+        state.error = nil
+        switch event {
+        case .didFetchStocks(let stocks):
+            state.stocks = stocks
+            state.isLoading = false
+            if !stocks.isEmpty {
+                state.isInitialLoading = false
+            }
+        case .didFailToFetchStocks(let error):
+            state.error = error.localizedDescription
+            state.isLoading = false
+            state.isInitialLoading = true
+        case .didStartFetchingStocks:
+            if state.isInitialLoading {
+                state.isLoading = true
+            }
+        case .didOpenStockDetail(let stockSymbol):
+            if state.selectedStock != stockSymbol {
+                state.selectedStock = stockSymbol
+            }
+        case .dismissDetails:
+            state.selectedStock = nil
+        }
+        return state
     }
 
     public override func send(_ action: StockListActions) {
@@ -72,7 +76,11 @@ public final class StockListViewModel: ViewModel<StockListState, StockListAction
                 .store(in: &cancellables)
 
         case .openStockDetail(stockSymbol: let stockSymbol):
+            dependencies.routeToDirection(.stockDetail(stockSymbol: stockSymbol))
             events.send(.didOpenStockDetail(stockSymbol: stockSymbol))
+
+        case .dismissDetails:
+            events.send(.dismissDetails)
         }
     }
 }

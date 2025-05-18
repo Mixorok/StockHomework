@@ -1,11 +1,18 @@
-//
-//  StockListRouting.swift
-//  StockList
-//
-//  Created by Maksim Bezdrobnoi on 17.05.2025.
-//
+import SwiftUI
 
+public final class StockListRouting: BaseRouter<StockListRouter> {
 
-public enum Routing {
-    case stockDetail(stockSymbol: String)
+    private let routeToDetails: (String) -> AnyView
+
+    public init(routeToDetails: @escaping (String) -> AnyView) {
+        self.routeToDetails = routeToDetails
+        super.init()
+    }
+
+    public override func route(to direction: StockListRouter) {
+        switch direction {
+        case .stockDetail(let stockSymbol):
+            set(view: routeToDetails(stockSymbol), for: direction)
+        }
+    }
 }

@@ -31,28 +31,26 @@ internal struct StockListComponent {
 
     @MainActor
     func makeStockList() -> some View {
+        let router = StockListRouting(routeToDetails: makeStockDetails)
         let viewModel = StockListViewModel(
             dependencies: .init(
                 getStockList: GetStockListImpl(
                     networkClient: networkClient,
                     stocksRepository: stocksRepository
                 ),
-                stocksRepository: stocksRepository
+                stocksRepository: stocksRepository,
+                routeToDirection: router.route
             )
         )
 
         return StockListView(
             viewModel: viewModel,
-            view: { routing in
-                switch routing {
-                case .stockDetail(let stockSymbol):
-                    makeStockDetails(for: stockSymbol)
-                }
-            }
+            router: router
         )
     }
 
-    private func makeStockDetails(for stockSymbol: String) -> some View {
-        EmptyView()
+    @MainActor
+    private func makeStockDetails(for stockSymbol: String) -> AnyView {
+        AnyView(StockDetailsComponent(parent: self).makeDetails(for: stockSymbol))
     }
 }
