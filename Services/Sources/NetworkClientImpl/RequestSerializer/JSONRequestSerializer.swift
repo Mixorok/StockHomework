@@ -31,18 +31,3 @@ public struct JSONRequestSerializer: RequestSerializer {
         return request
     }
 }
-
-private extension Error {
-
-    var asDebugDescription: String? {
-        guard let err = self as? EncodingError else {
-            return nil
-        }
-        switch err {
-        case .invalidValue(_, let context):
-            return context.debugDescription
-        @unknown default:
-            return nil
-        }
-    }
-}

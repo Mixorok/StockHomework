@@ -7,18 +7,24 @@
 
 import Combine
 import Domain
+import StocksRepository
 import GetStockList
 import NetworkClient
 
 public struct GetStockListImpl: GetStockList {
 
     private let networkClient: NetworkClient
+    private let stocksRepository: StocksRepository
 
-    public init (networkClient: NetworkClient) {
+    public init (
+        networkClient: NetworkClient,
+        stocksRepository: StocksRepository
+    ) {
         self.networkClient = networkClient
+        self.stocksRepository = stocksRepository
     }
 
-    public func callAsFunction() -> AnyPublisher<[Stock], any Error> {
+    public func callAsFunction() -> AnyPublisher<Never, Error> {
         networkClient.get(StockListResponse.self, path: "market/v2/get-summary")
             .map(\.marketSummaryAndSparkResponse.result)
             .map { results in
@@ -32,6 +38,8 @@ public struct GetStockListImpl: GetStockList {
 
                 }
             }
+            .handleEvents(receiveOutput: stocksRepository.updateStocks)
+            .ignoreOutput()
             .eraseToAnyPublisher()
     }
 }
@@ -39,7 +47,7 @@ public struct GetStockListImpl: GetStockList {
 private extension ResultResponse {
 
     var percentChange: Double? {
-        guard let lastClose = spark.close.last(where: { $0 != nil }) as? Double else { return nil }
+        guard let lastClose = spark.close?.last(where: { $0 != nil }) as? Double else { return nil }
         let change = spark.previousClose - lastClose
         return (change / lastClose) * 100
     }
@@ -61,5 +69,5 @@ private struct ResultResponse: Decodable {
 
 private struct SparkResponse: Decodable {
     let previousClose: Double
-    let close: [Double?]
+    let close: [Double?]?
 }

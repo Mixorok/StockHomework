@@ -9,5 +9,5 @@ import Domain
 import Combine
 
 public protocol GetStockList {
-    func callAsFunction() -> AnyPublisher<[Stock], Error>
+    func callAsFunction() -> AnyPublisher<Never, Error>
 }
