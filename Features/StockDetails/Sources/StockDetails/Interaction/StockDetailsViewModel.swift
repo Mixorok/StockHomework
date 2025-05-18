@@ -23,7 +23,6 @@ public final class StockDetailsViewModel: ViewModel<StockDetailsState, StockDeta
         self.dependencies = dependencies
 
         let updateStock = dependencies.stocksRepository.stocks
-            .first()
             .compactMap { $0.first(where: { $0.symbol == stockSymbol }) }
             .map(StockDetailsEvents.didFetchStock)
 
