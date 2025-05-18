@@ -9,18 +9,17 @@ import SwiftUI
 import Domain
 import ArchitectureKit
 
-public struct StockListView<RoutingView: View>: View {
+public struct StockListView: View {
 
     @StateObject private var viewModel: ViewModel<StockListState, StockListActions>
-
-    private let view: (Routing) -> RoutingView
+    @StateObject private var router: BaseRouter<StockListRouter>
 
     public init(
         viewModel: ViewModel<StockListState, StockListActions>,
-        @ViewBuilder view: @escaping (Routing) -> RoutingView
+        router: BaseRouter<StockListRouter>
     ) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-        self.view = view
+        _viewModel =  StateObject(wrappedValue: viewModel)
+        _router = StateObject(wrappedValue: router)
     }
 
     public var body: some View {
@@ -42,5 +41,13 @@ public struct StockListView<RoutingView: View>: View {
             }
         }
         .navigationTitle("Stocks")
+        .navigationDestination(
+            item: Binding(
+                get: { viewModel.state.selectedStock },
+                set: { _ in viewModel.send(.dismissDetails)}
+            )
+        ) { selectedStock in
+            router.view(for: .stockDetail(stockSymbol: selectedStock))
+        }
     }
 }

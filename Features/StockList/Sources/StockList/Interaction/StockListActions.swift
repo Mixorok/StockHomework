@@ -8,4 +8,5 @@
 public enum StockListActions {
     case fetchStocks
     case openStockDetail(stockSymbol: String)
+    case dismissDetails
 }

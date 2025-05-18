@@ -12,4 +12,5 @@ public enum StockListEvents {
     case didFailToFetchStocks(Error)
     case didStartFetchingStocks
     case didOpenStockDetail(stockSymbol: String)
+    case dismissDetails
 }

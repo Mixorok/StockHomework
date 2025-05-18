@@ -14,13 +14,16 @@ public extension StockListViewModel {
 
         let getStockList: GetStockList
         let stocksRepository: StocksRepository
+        let routeToDirection: (StockListRouter) -> Void
 
         public init(
             getStockList: GetStockList,
-            stocksRepository: StocksRepository
+            stocksRepository: StocksRepository,
+            routeToDirection: @escaping (StockListRouter) -> Void
         ) {
             self.getStockList = getStockList
             self.stocksRepository = stocksRepository
+            self.routeToDirection = routeToDirection
         }
     }
 }
