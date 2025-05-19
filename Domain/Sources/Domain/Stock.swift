@@ -5,7 +5,7 @@
 //  Created by Maksim Bezdrobnoi on 17.05.2025.
 //
 
-public struct Stock {
+public struct Stock: Equatable {
 
     public let symbol: String
     public let name: String

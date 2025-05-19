@@ -8,6 +8,8 @@
 import SwiftUI
 import NetworkClient
 import NetworkClientImpl
+import StocksGateway
+import StocksGatewayImpl
 import SystemConfiguration
 import StockList
 import StocksRepository
@@ -16,16 +18,17 @@ import GetStockListImpl
 
 internal struct StockListComponent {
 
-    let networkClient: NetworkClient
+    let stocksGateway: StocksGateway
     let stocksRepository: StocksRepository
 
     init() {
-        networkClient = ConfigurableNetworkClient(
+        let networkClient = ConfigurableNetworkClient(
             session: .shared,
             requestSerializer: JSONRequestSerializer(),
             responseSerializer: JSONResponseSerializer(),
             endpointConfiguration: APIEndpointConfiguration()
         )
+        stocksGateway = StocksGatewayImpl(networkClient: networkClient)
         stocksRepository = StocksRepositoryImpl()
     }
 
@@ -35,7 +38,7 @@ internal struct StockListComponent {
         let viewModel = StockListViewModel(
             dependencies: .init(
                 getStockList: GetStockListImpl(
-                    networkClient: networkClient,
+                    stocksGateway: stocksGateway,
                     stocksRepository: stocksRepository
                 ),
                 stocksRepository: stocksRepository,

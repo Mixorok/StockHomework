@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		261CDF192DD87BC000168C00 /* UseCases in Resources */ = {isa = PBXBuildFile; fileRef = 261CDF182DD87BC000168C00 /* UseCases */; };
+		2648296F2DDB4BBD0019555F /* FrontendAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 2648296E2DDB4BBD0019555F /* FrontendAPI */; };
+		264829712DDB4BBD0019555F /* FrontendAPIImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 264829702DDB4BBD0019555F /* FrontendAPIImpl */; };
 		267134162DD9EF3500D143B6 /* Infrastructure in Frameworks */ = {isa = PBXBuildFile; productRef = 267134152DD9EF3500D143B6 /* Infrastructure */; };
 		267134182DDA076600D143B6 /* InfrastructureImpl in Frameworks */ = {isa = PBXBuildFile; productRef = 267134172DDA076600D143B6 /* InfrastructureImpl */; };
 		267134292DDA226E00D143B6 /* CommonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267134282DDA226E00D143B6 /* CommonUI */; };
@@ -45,6 +47,7 @@
 		261CDF122DD87AA700168C00 /* StockList */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockList; sourceTree = "<group>"; };
 		261CDF132DD87ACE00168C00 /* StockDetails */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StockDetails; sourceTree = "<group>"; };
 		261CDF182DD87BC000168C00 /* UseCases */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UseCases; sourceTree = "<group>"; };
+		2648296D2DDB49320019555F /* FrontendAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = FrontendAPI; sourceTree = "<group>"; };
 		267134272DDA226300D143B6 /* CommonUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CommonUI; sourceTree = "<group>"; };
 		26D8CC4E2DD8A4C8001178E2 /* Services */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Services; sourceTree = "<group>"; };
 		26D8CC512DD9EE29001178E2 /* Infrastructure */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Infrastructure; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 			files = (
 				26D8CC462DD89120001178E2 /* UseCases in Frameworks */,
 				267134292DDA226E00D143B6 /* CommonUI in Frameworks */,
+				2648296F2DDB4BBD0019555F /* FrontendAPI in Frameworks */,
+				264829712DDB4BBD0019555F /* FrontendAPIImpl in Frameworks */,
 				26D8CC402DD89120001178E2 /* Domain in Frameworks */,
 				26D8CC482DD89120001178E2 /* UseCasesImpl in Frameworks */,
 				26D8CC442DD89120001178E2 /* StockList in Frameworks */,
@@ -97,6 +102,7 @@
 		261CDECF2DD8786D00168C00 = {
 			isa = PBXGroup;
 			children = (
+				2648296D2DDB49320019555F /* FrontendAPI */,
 				267134272DDA226300D143B6 /* CommonUI */,
 				26D8CC512DD9EE29001178E2 /* Infrastructure */,
 				26D8CC4E2DD8A4C8001178E2 /* Services */,
@@ -166,6 +172,8 @@
 				267134152DD9EF3500D143B6 /* Infrastructure */,
 				267134172DDA076600D143B6 /* InfrastructureImpl */,
 				267134282DDA226E00D143B6 /* CommonUI */,
+				2648296E2DDB4BBD0019555F /* FrontendAPI */,
+				264829702DDB4BBD0019555F /* FrontendAPIImpl */,
 			);
 			productName = StockHomework;
 			productReference = 261CDED82DD8786D00168C00 /* StockHomework.app */;
@@ -609,6 +617,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2648296E2DDB4BBD0019555F /* FrontendAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FrontendAPI;
+		};
+		264829702DDB4BBD0019555F /* FrontendAPIImpl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FrontendAPIImpl;
+		};
 		267134152DD9EF3500D143B6 /* Infrastructure */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Infrastructure;

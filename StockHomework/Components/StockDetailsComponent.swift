@@ -18,9 +18,7 @@ internal struct StockDetailsComponent {
         let viewModel = StockDetailsViewModel(
             stockSymbol: stockSymbol,
             dependencies: .init(
-                getStockDetails: GetStockDetailsImpl(
-                    networkClient: parent.networkClient
-                ),
+                getStockDetails: GetStockDetailsImpl(stocksGateway: parent.stocksGateway),
                 stocksRepository: parent.stocksRepository
             )
         )
