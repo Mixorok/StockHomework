@@ -15,6 +15,7 @@ let package = Package(
         .package(path: "../ArchitectureKit"),
         .package(path: "../Domain"),
         .package(path: "../UseCases"),
+        .package(path: "../Infrastructure"),
         .package(path: "../CommonUI"),
     ],
     targets: [
@@ -24,8 +25,18 @@ let package = Package(
                 "Domain",
                 "ArchitectureKit",
                 "CommonUI",
-                .product(name: "UseCases", package: "UseCases")
+                .product(name: "UseCases", package: "UseCases"),
+                .product(name: "Infrastructure", package: "Infrastructure")
             ],
-        )
+        ),
+        .testTarget(
+            name: "StockListTests",
+            dependencies: [
+                "Domain",
+                "StockList",
+                .product(name: "UseCases", package: "UseCases"),
+                .product(name: "Infrastructure", package: "Infrastructure")
+            ]
+        ),
     ]
 )
