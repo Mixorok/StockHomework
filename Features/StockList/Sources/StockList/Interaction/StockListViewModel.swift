@@ -61,6 +61,8 @@ public final class StockListViewModel: ViewModel<StockListState, StockListAction
             }
         case .dismissDetails:
             state.selectedStock = nil
+        case .didChangeSearchInput(let searchInput):
+            state.searchInput = searchInput
         }
         return state
     }
@@ -81,6 +83,9 @@ public final class StockListViewModel: ViewModel<StockListState, StockListAction
 
         case .dismissDetails:
             events.send(.dismissDetails)
+
+        case .changeSearchInput(let searchText):
+            events.send(.didChangeSearchInput(searchText: searchText))
         }
     }
 }

@@ -13,4 +13,5 @@ public enum StockListEvents {
     case didStartFetchingStocks
     case didOpenStockDetail(stockSymbol: String)
     case dismissDetails
+    case didChangeSearchInput(searchText: String)
 }
