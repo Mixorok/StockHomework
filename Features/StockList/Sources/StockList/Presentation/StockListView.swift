@@ -24,12 +24,20 @@ public struct StockListView: View {
 
     public var body: some View {
         ZStack {
-            List(viewModel.state.stocks, id: \.symbol) { stock in
+            List(viewModel.state.filteredStocks, id: \.symbol) { stock in
                 SingleStockView(
                     stock: stock,
                     openStockDetails: { viewModel.send(.openStockDetail(stockSymbol: $0)) }
                 )
             }
+            .searchable(
+                text: Binding(
+                    get: { viewModel.state.searchInput },
+                    set: { viewModel.send(.changeSearchInput(searchText: $0))}
+                ),
+                placement: .navigationBarDrawer(displayMode: .always),
+                prompt: "Stock name"
+            )
 
             if viewModel.state.isLoading {
                 ProgressView()

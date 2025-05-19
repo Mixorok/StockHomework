@@ -1,4 +1,5 @@
 import SwiftUI
+import ArchitectureKit
 
 public final class StockListRouting: BaseRouter<StockListRouter> {
 

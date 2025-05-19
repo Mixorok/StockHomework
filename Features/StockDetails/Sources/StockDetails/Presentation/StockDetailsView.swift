@@ -25,9 +25,15 @@ public struct StockDetailsView: View {
                 renderStockHeader(for: stock)
 
                 if let details = viewModel.state.stockDetails {
-                    renderPrimaryStats(for: details)
-                    renderMarketCap(for: details)
-                    renderVolume(for: details)
+                    if viewModel.state.isPrimaryStatsAvailable {
+                        renderPrimaryStats(for: details)
+                    }
+                    if viewModel.state.isMarketCapAvailable {
+                        renderMarketCap(for: details)
+                    }
+                    if viewModel.state.isVolumeAvailable {
+                        renderVolume(for: details)
+                    }
                 } else if viewModel.state.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
@@ -108,5 +114,23 @@ private extension StockDetailsView {
         case .general(let error):
             error.localizedDescription
         }
+    }
+}
+
+private extension StockDetailsState {
+
+    var isPrimaryStatsAvailable: Bool {
+        stockDetails?.openPrice != nil
+        || stockDetails?.previousClose != nil
+        || stockDetails?.dayRange != nil
+        || stockDetails?.week52Range != nil
+    }
+
+    var isMarketCapAvailable: Bool {
+        stockDetails?.marketCap != nil
+    }
+
+    var isVolumeAvailable: Bool {
+        stockDetails?.volume != nil
     }
 }
