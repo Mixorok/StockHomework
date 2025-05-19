@@ -9,24 +9,23 @@ import Combine
 import Domain
 import StocksRepository
 import GetStockList
-import NetworkClient
+import StocksGateway
 
 public struct GetStockListImpl: GetStockList {
 
-    private let networkClient: NetworkClient
+    private let stocksGateway: StocksGateway
     private let stocksRepository: StocksRepository
 
     public init (
-        networkClient: NetworkClient,
+        stocksGateway: StocksGateway,
         stocksRepository: StocksRepository
     ) {
-        self.networkClient = networkClient
+        self.stocksGateway = stocksGateway
         self.stocksRepository = stocksRepository
     }
 
     public func callAsFunction() -> AnyPublisher<Never, Error> {
-        networkClient.get(StockListResponse.self, path: "market/v2/get-summary")
-            .map(\.marketSummaryAndSparkResponse.result)
+        stocksGateway.fetchStocks()
             .map { results in
                 results.map { response in
                     Stock(
@@ -44,7 +43,7 @@ public struct GetStockListImpl: GetStockList {
     }
 }
 
-private extension ResultResponse {
+private extension StockResultDTO {
 
     var percentChange: Double? {
         guard let lastClose = spark.close?.last(where: { $0 != nil }) as? Double else { return nil }
@@ -53,21 +52,3 @@ private extension ResultResponse {
     }
 }
 
-private struct StockListResponse: Decodable {
-    let marketSummaryAndSparkResponse: MarketSummaryAndSparkResponse
-}
-
-private struct MarketSummaryAndSparkResponse: Decodable {
-    let result: [ResultResponse]
-}
-
-private struct ResultResponse: Decodable {
-    let fullExchangeName: String
-    let symbol: String
-    let spark: SparkResponse
-}
-
-private struct SparkResponse: Decodable {
-    let previousClose: Double
-    let close: [Double?]?
-}

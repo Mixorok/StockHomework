@@ -23,7 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Domain"),
-        .package(path: "../Services"),
+        .package(path: "../FrontendAPI"),
         .package(path: "../Infrastructure")
     ],
     targets: [
@@ -40,7 +40,7 @@ let package = Package(
             dependencies: [
                 "Domain",
                 "GetStockList",
-                .product(name: "Services", package: "Services"),
+                .product(name: "FrontendAPI", package: "FrontendAPI"),
                 .product(name: "Infrastructure", package: "Infrastructure"),
             ]
         ),
@@ -49,7 +49,26 @@ let package = Package(
             dependencies: [
                 "Domain",
                 "GetStockDetails",
-                .product(name: "Services", package: "Services"),
+                .product(name: "FrontendAPI", package: "FrontendAPI"),
+                .product(name: "Infrastructure", package: "Infrastructure"),
+            ]
+        ),
+        .testTarget(
+            name: "GetStockListTests",
+            dependencies: [
+                "Domain",
+                "GetStockListImpl",
+                .product(name: "FrontendAPI", package: "FrontendAPI"),
+                .product(name: "Infrastructure", package: "Infrastructure"),
+            ]
+        ),
+        .testTarget(
+            name: "GetStockDetailsTests",
+            dependencies: [
+                "Domain",
+                "GetStockDetails",
+                "GetStockDetailsImpl",
+                .product(name: "FrontendAPI", package: "FrontendAPI"),
                 .product(name: "Infrastructure", package: "Infrastructure"),
             ]
         ),
