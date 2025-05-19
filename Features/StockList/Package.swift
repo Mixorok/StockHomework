@@ -12,11 +12,11 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../ArchitectureKit"),
-        .package(path: "../Domain"),
-        .package(path: "../UseCases"),
-        .package(path: "../Infrastructure"),
-        .package(path: "../CommonUI"),
+        .package(path: "../../ArchitectureKit"),
+        .package(path: "../../Domain"),
+        .package(path: "../../UseCases"),
+        .package(path: "../../Infrastructure"),
+        .package(path: "../../CommonUI"),
     ],
     targets: [
         .target(
