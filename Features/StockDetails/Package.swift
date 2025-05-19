@@ -12,10 +12,11 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../ArchitectureKit"),
-        .package(path: "../Domain"),
-        .package(path: "../UseCases"),
-        .package(path: "../CommonUI"),
+        .package(path: "../../ArchitectureKit"),
+        .package(path: "../../Domain"),
+        .package(path: "../../UseCases"),
+        .package(path: "../../Infrastructure"),
+        .package(path: "../../CommonUI"),
     ],
     targets: [
         .target(
@@ -24,7 +25,8 @@ let package = Package(
                 "Domain",
                 "ArchitectureKit",
                 "CommonUI",
-                .product(name: "UseCases", package: "UseCases")
+                .product(name: "UseCases", package: "UseCases"),
+                .product(name: "Infrastructure", package: "Infrastructure")
             ],
         )
     ]
