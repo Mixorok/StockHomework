@@ -50,6 +50,6 @@ private extension StockDetailsDTO {
 
     var week52Range: String? {
         guard let low = fiftyTwoWeekLow, let high = fiftyTwoWeekHigh else { return nil }
-        return String(format: "%.2f - %.2f", low, high)
+        return String(format: "$%.2f - $%.2f", low, high)
     }
 }

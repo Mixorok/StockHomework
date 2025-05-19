@@ -53,7 +53,7 @@ final class GetStockDetailsTests: XCTestCase {
         XCTAssertEqual(result?.previousClose, 99)
         XCTAssertEqual(result?.volume, 1000000)
         XCTAssertEqual(result?.dayRange, "$95.00 - $105.00")
-        XCTAssertEqual(result?.week52Range, "80.00 - 110.00")
+        XCTAssertEqual(result?.week52Range, "$80.00 - $110.00")
         XCTAssertEqual(result?.marketCap, 2000000000)
     }
 
